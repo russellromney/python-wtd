@@ -17,7 +17,7 @@ df = wtd.historical('AAPL',date_from='2018')
 df = wtd.historical('AAPL',date_to=datetime.date.today())
 ```
 
-~~Only the historical part of the API is implemented as of v0.1. Accepting all pull requests and issues.~~
+~~Only the historical part of the API is implemented as of v0.1.~~
 
 **Search**
 
@@ -36,6 +36,8 @@ wtd.search("AAPL",limit=2)
   'stock_exchange_long': 'Buenos Aires Stock Exchange',
   'stock_exchange_short': 'BCBA'}]
 ```
+
+Only historical and search are implemented as of v0.1.1. Accepting all pull requests and issues.
 
 ---
 
