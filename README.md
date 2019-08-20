@@ -3,9 +3,11 @@ Python wrapper for World Trading Data API
 
 ---
 
-Returns a Pandas DataFrame of the data. Flexible date input, optional args. Some error checking before the API request.
+WTD checks API key before the API request.
 
 **Historical data**
+
+Returns a Pandas DataFrame of the data. Flexible date input, optional args. 
 
 ```python
 from python_wtd import WTD
@@ -16,10 +18,13 @@ df = wtd.historical('AAPL',order='oldest')
 df = wtd.historical('AAPL',date_from='2018')
 df = wtd.historical('AAPL',date_to=datetime.date.today())
 ```
+Docs here: https://www.worldtradingdata.com/documentation#full-history
 
 ~~Only the historical part of the API is implemented as of v0.1.~~
 
 **Search**
+
+Returns a list of the search results. Empty if nothing.
 
 ```python
 wtd.search("AAPL",limit=2)
@@ -36,6 +41,8 @@ wtd.search("AAPL",limit=2)
   'stock_exchange_long': 'Buenos Aires Stock Exchange',
   'stock_exchange_short': 'BCBA'}]
 ```
+
+Docs here: https://www.worldtradingdata.com/documentation#searching
 
 Only historical and search are implemented as of v0.1.1. Accepting all pull requests and issues.
 
