@@ -71,14 +71,11 @@ class WTD(object):
         )
 
         r = requests.get(self.API + '/stock_search', params=params)
+
         data = r.json()
         data = data['data']
 
-        df = pd.DataFrame.from_dict(data['data'], orient='index')
-        df.index = pd.to_datetime(df.index)
-        df = df.apply(pd.to_numeric)
-
-        return df
+        return data
 
 
 

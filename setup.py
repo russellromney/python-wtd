@@ -3,11 +3,11 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'python-wtd',
-    version = '0.1',
+    version = '0.1.1',
     description = 'Python wrapper for World Trading Data API',
     keywords = ' python finance trading stocks prices worldtradingdata wtd alphavantage iex',
     url = 'https://github.com/russellromney/python-wtd',
-    download_url = 'https://github.com/russellromney/python-wtd/archive/v0.1.tar.gz',
+    download_url = 'https://github.com/russellromney/python-wtd/archive/v0.1.1.tar.gz',
     author = 'Russell Romney',
     author_email = 'russellromney@gmail.com',
     license = 'MIT',
