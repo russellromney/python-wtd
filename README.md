@@ -41,6 +41,8 @@ Docs here: https://www.worldtradingdata.com/documentation#searching
 
 **Realtime stock and mutual funds**
 
+Get real-time stock or mutual fund data as a dictionary (default) or a DataFrame.
+
 ```python
 # stock
 my_dict = wtd.stock('AAPL',output='dict')
