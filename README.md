@@ -1,9 +1,6 @@
 # python-wtd
 Python wrapper for World Trading Data API
 
----
-
-WTD checks API key before the API request.
 
 **Historical data**
 
