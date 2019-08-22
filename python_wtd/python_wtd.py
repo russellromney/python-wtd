@@ -51,18 +51,18 @@ class WTD(object):
                 'true','false' (def False)
         '''
         if not output in ['dict','pandas']:
-            raise WTDException('WTD.historical: output must be one of "pandas","dict"')
+            raise WTD.WTDException('WTD.historical: output must be one of "pandas","dict"')
 
         # ensure date params are correct
         #params = self._process_date_params(
-        {
+        params = {
             'symbol':ticker,
-            'api_token':wtd.api_key,
+            'api_token':self.api_key,
             # **kwargs
         }
         #)
 
-        data = requests.get(wtd.API + '/history', params=params)
+        data = requests.get(self.API + '/history', params=params)
         data = data.json()
         data = data['history']
 
@@ -87,6 +87,8 @@ class WTD(object):
             stock_exchange
             currency
             limit
+            search_by:
+                'symbol', 'name', 'symbol,name' (default)
             page
             sort_by:
                 'symbol', 'name', 'currency',
@@ -96,14 +98,13 @@ class WTD(object):
                 'asc','desc'
         '''
         if not isinstance(search_term,str):
-            raise WTDException('WTD.search: search_term must be of type str')
+            raise WTD.WTDException('WTD.search: search_term must be of type str')
 
         params = {
-                'search_term':search_term,
-                'api_token':self.api_key,
-                **kwargs
-            }
-        )
+            'search_term':search_term,
+            'api_token':self.api_key,
+            **kwargs
+        }
 
         r = requests.get(self.API + '/stock_search', params=params)
 
@@ -114,7 +115,7 @@ class WTD(object):
 
     # realtime stock
     @WTDDecorators.confirm_api_key
-    def stock(ticker,output='dict',**kwargs):
+    def stock(self,ticker,output='dict',**kwargs):
         '''
         return the realtime market for a stock or an iterable of stocks
 
@@ -130,7 +131,7 @@ class WTD(object):
                 'symbol', 'name', 'list_order'
         '''
         if not output in ['pandas','dict']:
-            raise WTDException('WTD.stock: output must be one of "pandas","dict"')
+            raise WTD.WTDException('WTD.stock: output must be one of "pandas","dict"')
 
         if isinstance(ticker,str):
             pass
@@ -144,11 +145,11 @@ class WTD(object):
                 raise WTD.WTDException('WTD.stock: ticker must be a string or a list/tuple of strings')
 
         params = {
-            'api_token':wtd.api_key,
+            'api_token':self.api_key,
             'output':{'pandas':'csv','dict':'json'}[output],
             'symbol':ticker
         }
-        url = wtd.API+'/stock'
+        url = self.API+'/stock'
 
         if output=='pandas':
             with requests.Session() as s:
@@ -164,7 +165,7 @@ class WTD(object):
 
     # realtime mutual fund
     @WTDDecorators.confirm_api_key
-    def mutualfund(ticker,output='dict',**kwargs):
+    def mutualfund(self,ticker,output='dict',**kwargs):
         '''
         return the realtime data for a stock or an iterable of stocks
 
@@ -180,7 +181,7 @@ class WTD(object):
                 'symbol', 'name', 'list_order'
         '''
         if not output in ['pandas','dict']:
-            raise WTDException('WTD.stock: output must be one of "pandas","dict"')
+            raise WTD.WTDException('WTD.stock: output must be one of "pandas","dict"')
 
         if isinstance(ticker,str):
             pass
@@ -194,11 +195,11 @@ class WTD(object):
                 raise WTD.WTDException('WTD.stock: ticker must be a string or a list/tuple of strings')
 
         params = {
-            'api_token':wtd.api_key,
+            'api_token':self.api_key,
             'output':{'pandas':'csv','dict':'json'}[output],
             'symbol':ticker
         }
-        url = wtd.API+'/mutualfund'
+        url = self.API+'/mutualfund'
 
         if output=='pandas':
             with requests.Session() as s:
@@ -222,7 +223,7 @@ class WTD(object):
         elif isinstance(date_, str):
             return parse(date_).strftime('%Y-%m-%d')
         else:
-            raise WTDException('Invalid date')
+            raise WTD.WTDException('Invalid date')
 
 
     def process_date_params(self,params):
