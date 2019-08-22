@@ -2,7 +2,7 @@
 Python wrapper for World Trading Data API
 
 
-**Historical data**
+### Historical data
 
 Returns either a dict (`output='dict'`) or a DataFrame (`output='pandas'`, default )of the data. Flexible date input, optional args.
 
@@ -18,7 +18,7 @@ Docs here: https://www.worldtradingdata.com/documentation#full-history
 
 ~~Only the historical part of the API is implemented as of v0.1.~~
 
-**Search**
+### Search
 
 Returns a list of the search results. Empty if nothing.
 
@@ -36,7 +36,7 @@ Docs here: https://www.worldtradingdata.com/documentation#searching
 
 ~~Only historical and search are implemented as of v0.1.1.~~
 
-**Realtime stock and mutual funds**
+### Realtime stock and mutual funds
 
 Get real-time stock or mutual fund data as a dictionary (default) or a DataFrame.
 
