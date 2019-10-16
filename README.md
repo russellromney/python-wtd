@@ -51,7 +51,7 @@ my_dict = wtd.mutualfund(['AAAAX','AAADX'],output='dict')
 
 Docs here: https://www.worldtradingdata.com/documentation#real-time-market-data
 
- Only historical and search are implemented as of v0.1.3. Accepting all pull requests and issues.
+ Only historical, realtime and search are implemented as of v0.1.3. Accepting all pull requests and issues.
 
 ---
 
